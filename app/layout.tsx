@@ -3,13 +3,12 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import "./globals.css";
 import React from "react";
 import ThemeProvider from "@/context/Theme";
-import Navbar from "@/components/navigation/navbar";
-
-
+import {Toaster} from "@/components/ui/sonner";
 
 const inter = Inter({
     variable: "--font-Inter",
     subsets: ["latin"],
+   
 });
 const spaceGrotesk = Space_Grotesk({
     variable: "--font-space-grotesk",
@@ -36,9 +35,10 @@ export default function RootLayout({
                 className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
             >
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={true}>
-                    <Navbar />
                     {children}
+                    <Toaster />
                 </ThemeProvider>
+
             </body>
         </html>
     );
