@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
-import ROUTES from "@/contants/route";
-
+import ROUTES from "@/constants/route";
 const SocialAuthForm = () => {
     const buttonClass = "background-dark400_light900 body-medium text-dark200_light800 min-h-12 flex-1 rounded-2 px-4 py-3.5";
     const handleSignIn = async (provider: "github" | "google") => {
@@ -19,7 +18,7 @@ const SocialAuthForm = () => {
             console.log(error);
             toast.error('Sign in failed!', {
                 description: 'Please try again later.',
-                
+               
             });
         }
     }

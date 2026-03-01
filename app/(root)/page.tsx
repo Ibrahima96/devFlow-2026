@@ -1,6 +1,6 @@
 import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
-import ROUTES from "@/contants/route";
+import ROUTES from "@/constants/route";
 
 export default async function Home() {
     const session = await auth();
@@ -11,7 +11,7 @@ export default async function Home() {
                 hello world 🤩🕸️😏😁
             </h1>
 
-            <form  className="pt-30 px-12" action={async () => {
+            <form className="pt-30 px-12" action={async () => {
                 "use server"
                 await signOut({ redirectTo: ROUTES.SIGN_IN });
             }}>
