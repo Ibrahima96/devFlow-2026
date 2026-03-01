@@ -16,6 +16,7 @@ const NavLinks = ({
   isMobileNav?: boolean;
   userId?: string;
 }) => {
+  // permet de trouver un url
   const pathname = usePathname();
   const userId = 1
   return (
