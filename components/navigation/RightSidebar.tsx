@@ -14,11 +14,11 @@ const RightSidebar = () => {
         {_id: "5", title: "How to use  React and NextJs ?"},
     ]
     const popularTags = [
-        {_id: "1", name: "React", questions: 1000}
-        , {_id: "2", name: "NextJs", questions: 1000}
-        , {_id: "3", name: "Redux", questions: 1000}
-        , {_id: "4", name: "Tailwind", questions: 1000}
-        , {_id: "5", name: "Typescript", questions: 1000}
+        {_id: "1", name: "React", questions: 180}
+        , {_id: "2", name: "NextJs", questions: 500}
+        , {_id: "3", name: "Redux", questions: 190}
+        , {_id: "4", name: "Tailwind", questions: 100}
+        , {_id: "5", name: "Typescript", questions: 1110}
         , {_id: "6", name: "Javascript", questions: 1000}
     ]
     return (
