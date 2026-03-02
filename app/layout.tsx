@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from 'next/font/google';
+import type {Metadata} from "next";
+import {Inter, Space_Grotesk} from 'next/font/google';
 import "./globals.css";
 import React from "react";
 import ThemeProvider from "@/context/Theme";
-import { Toaster } from "@/components/ui/sonner";
-import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth";
+import {Toaster} from "@/components/ui/sonner";
+import {SessionProvider} from "next-auth/react";
+import {auth} from "@/auth";
 
 const inter = Inter({
     variable: "--font-Inter",
@@ -26,22 +26,29 @@ export const metadata: Metadata = {
 
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({children}: { children: React.ReactNode }) {
     const session = await auth()
     return (
-    
+
         <html lang="en" suppressHydrationWarning>
-            <body
-                className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
-            >
-                <SessionProvider session={session}>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={true}>
-                        {children}
-                        <Toaster />
-                    </ThemeProvider>
-                </SessionProvider>
-            </body>
+        <head>
+            <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+            />
+        </head>
+        <body
+            className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
+        >
+        <SessionProvider session={session}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={true}>
+                {children}
+                <Toaster/>
+            </ThemeProvider>
+        </SessionProvider>
+        </body>
         </html>
     );
-  
+
 }
