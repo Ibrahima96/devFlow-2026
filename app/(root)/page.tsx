@@ -4,9 +4,45 @@ import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/route";
 import Link from "next/link";
 
-export default async function Home() {
+const questions = [
+    {
+        _id: "1", title: "How to learn react",
+        description: "I want to learn React ,can anyone help me ?",
+        tags: [
+            { _id: "1", name: 'React' },
+            { _id: "2", name: 'JavaScript' }
+        ],
+        author: { _id: "1", name: "Jun Noor" },
+        upvote: 10,
+        answers: 20,
+        views: 1000,
+        createdAt: Date.now()
 
+    },
+    {
+        _id: "2", title: "How to learn JavaScript",
+        description: "I want to learn React ,can anyone help me ?",
+        tags: [
+            { _id: "1", name: 'React' },
+            { _id: "2", name: 'JavaScript' }
+        ],
+        author: { _id: "2", name: "Luna Wood" },
+        upvote: 10,
+        answers: 20,
+        views: 1000,
+        createdAt: Date.now()
 
+    }
+]
+interface SearchParams {
+    searchParams: Promise<{ [key: string]: string }>
+}
+
+export default async function Home({ searchParams }: SearchParams) {
+    const { query } = await searchParams
+
+    const filteredQuestions = questions
+        .filter((question) => question.title.toLowerCase().includes(query?.toLowerCase()))
     return (
         <>
             <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -28,13 +64,11 @@ export default async function Home() {
                     otherClasses="flex-1"
                 />
             </section>
-            homeFilter
+            {/* homeFilter */}
             <div className="flex flex-col gap-6 w-full mt-10 ">
-                <p>Question</p>
-                <p>Question</p>
-                <p>Question</p>
-                <p>Question</p>
-                <p>Question</p>
+                {filteredQuestions.map((question) => (
+                    <h1 key={question._id}>{question.title}</h1>
+                ))}
             </div>
         </>
     );
