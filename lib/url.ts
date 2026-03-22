@@ -10,7 +10,7 @@ interface RemoveUrlQueryParams {
   keysToRemove: string[];
 }
 
-export const fromUrlQuery = ({ params, key, value }: UrlQueryParams) => {
+export const formUrlQuery = ({ params, key, value }: UrlQueryParams) => {
   const queryString = qs.parse(params)
   queryString[key] = value
   return qs.stringifyUrl({
@@ -18,7 +18,7 @@ export const fromUrlQuery = ({ params, key, value }: UrlQueryParams) => {
     query: queryString
   })
 }
-export const removeKeyFromUrlQuery = ({ params, keysToRemove }: RemoveUrlQueryParams) => {
+export const removeKeysFromUrlQuery = ({ params, keysToRemove }: RemoveUrlQueryParams) => {
   const queryString = qs.parse(params)
   keysToRemove.forEach((key) => {
     delete queryString[key]

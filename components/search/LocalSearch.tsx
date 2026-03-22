@@ -1,9 +1,9 @@
 "use client"
 import Image from "next/image"
-import { Input } from "../ui/input"
-import { useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { fromUrlQuery, removeKeyFromUrlQuery } from "@/lib/url";
+import {Input} from "../ui/input"
+import {useEffect, useState} from "react";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {formUrlQuery, removeKeysFromUrlQuery} from "@/lib/url";
 
 
 interface Props {
@@ -14,38 +14,39 @@ interface Props {
 }
 
 
-const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
-    const pathname = usePathname()
-    const router = useRouter()
+const LocalSearch = ({route, imgSrc, placeholder, otherClasses}: Props) => {
     const searchParams = useSearchParams()
     const query = searchParams.get("query") || ""
     const [searchQuery, setSearchQuery] = useState(query)
+    const pathname = usePathname()
+    const router = useRouter()
     useEffect(() => {
         const delayDebouncedFn = setTimeout(() => {
 
             if (searchQuery) {
-                const newUrl = fromUrlQuery({
+                const newUrl = formUrlQuery({
                     params: searchParams.toString(),
                     key: "query",
                     value: searchQuery
                 })
-                router.push(newUrl, { scroll: false })
+                router.push(newUrl, {scroll: false})
             } else {
                 if (pathname === route) {
-                    const newUrl = removeKeyFromUrlQuery({
+                    const newUrl = removeKeysFromUrlQuery({
                         params: searchParams.toString(),
                         keysToRemove: ["query"]
                     })
 
-                    router.push(newUrl, { scroll: false })
+                    router.push(newUrl, {scroll: false})
                 }
             }
 
         }, 300)
         return () => clearTimeout(delayDebouncedFn)
-    }, [searchQuery, router, route, pathname])
+    }, [searchQuery, router, route, pathname, searchParams])
     return (
-        <div className={`background-light800_darkgradient flex min-h-14 grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}
+        <div
+            className={`background-light800_darkgradient flex min-h-14 grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}
         >
 
             <Image

@@ -1,18 +1,18 @@
-
 import LocalSearch from "@/components/search/LocalSearch";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import ROUTES from "@/constants/route";
 import Link from "next/link";
+import HomeFilter from "@/components/filters/HomeFilter";
 
 const questions = [
     {
         _id: "1", title: "How to learn react",
         description: "I want to learn React ,can anyone help me ?",
         tags: [
-            { _id: "1", name: 'React' },
-            { _id: "2", name: 'JavaScript' }
+            {_id: "1", name: 'React'},
+            {_id: "2", name: 'JavaScript'}
         ],
-        author: { _id: "1", name: "Jun Noor" },
+        author: {_id: "1", name: "Jun Noor"},
         upvote: 10,
         answers: 20,
         views: 1000,
@@ -23,10 +23,10 @@ const questions = [
         _id: "2", title: "How to learn JavaScript",
         description: "I want to learn React ,can anyone help me ?",
         tags: [
-            { _id: "1", name: 'React' },
-            { _id: "2", name: 'JavaScript' }
+            {_id: "1", name: 'React'},
+            {_id: "2", name: 'JavaScript'}
         ],
-        author: { _id: "2", name: "Luna Wood" },
+        author: {_id: "2", name: "Luna Wood"},
         upvote: 10,
         answers: 20,
         views: 1000,
@@ -34,12 +34,13 @@ const questions = [
 
     }
 ]
+
 interface SearchParams {
     searchParams: Promise<{ [key: string]: string }>
 }
 
-export default async function Home({ searchParams }: SearchParams) {
-    const { query } = await searchParams
+export default async function Home({searchParams}: SearchParams) {
+    const {query = "", filter} = await searchParams;
 
     const filteredQuestions = questions
         .filter((question) => question.title.toLowerCase().includes(query?.toLowerCase()))
@@ -64,7 +65,7 @@ export default async function Home({ searchParams }: SearchParams) {
                     otherClasses="flex-1"
                 />
             </section>
-            {/* homeFilter */}
+            <HomeFilter/>
             <div className="flex flex-col gap-6 w-full mt-10 ">
                 {filteredQuestions.map((question) => (
                     <h1 key={question._id}>{question.title}</h1>
