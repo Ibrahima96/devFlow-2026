@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button";
 import ROUTES from "@/constants/route";
 import Link from "next/link";
 import HomeFilter from "@/components/filters/HomeFilter";
+import QuestionCard from "@/components/cards/QuestionCard";
 
 const questions = [
     {
@@ -68,7 +69,7 @@ export default async function Home({searchParams}: SearchParams) {
             <HomeFilter/>
             <div className="flex flex-col gap-6 w-full mt-10 ">
                 {filteredQuestions.map((question) => (
-                    <h1 key={question._id}>{question.title}</h1>
+                 <QuestionCard key={question._id} question={question}/>
                 ))}
             </div>
         </>
