@@ -13,11 +13,11 @@ const questions = [
             {_id: "1", name: 'React'},
             {_id: "2", name: 'JavaScript'}
         ],
-        author: {_id: "1", name: "Jun Noor"},
+        author: {_id: "1", name: "Jun Noor",image:"https://cdn3d.iconscout.com/3d/premium/thumb/avatar-de-bel-homme-3d-icon-png-download-8330276.png"},
         upvote: 10,
         answers: 20,
         views: 1000,
-        createdAt: Date.now()
+        createdAt: Date.now() 
 
     },
     {
@@ -27,7 +27,7 @@ const questions = [
             {_id: "1", name: 'React'},
             {_id: "2", name: 'JavaScript'}
         ],
-        author: {_id: "2", name: "Luna Wood"},
+        author: {_id: "2", name: "Luna Wood",image:"https://img.freepik.com/vecteurs-libre/femme-souriante-aux-cheveux-tresses_1308-174961.jpg?semt=ais_hybrid&w=740&q=80"},
         upvote: 10,
         answers: 20,
         views: 1000,
