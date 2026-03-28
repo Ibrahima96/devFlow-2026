@@ -69,7 +69,7 @@ export default async function Home({searchParams}: SearchParams) {
             <HomeFilter/>
             <div className="flex flex-col gap-6 w-full mt-10 ">
                 {filteredQuestions.map((question) => (
-                 <QuestionCard key={question._id} question={question}/>
+                 <QuestionCard key={question._id} question={question as any}/>
                 ))}
             </div>
         </>
