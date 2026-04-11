@@ -23,6 +23,6 @@ const UserSchema = new Schema<IUser>({
     reputation: { type: Number, default: 0 }
 }, { timestamps: true })
 
-const User = models?.user || model<IUser>("User", UserSchema);
+const User = models?.User || model<IUser>("User", UserSchema);
 
 export default User;
