@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import logger from "./logger";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -10,6 +11,7 @@ let cached = (global as any).mongoose;
 
 if (!cached) {
     cached = (global as any).mongoose = { conn: null };
+    
 }
 
 const dbConnect = async () => {
@@ -18,6 +20,7 @@ const dbConnect = async () => {
     cached.conn = await mongoose.connect(MONGODB_URI, {
         dbName: "devflow",
     });
+    logger.info("MongoDB connected");
     return cached.conn;
 };
 
